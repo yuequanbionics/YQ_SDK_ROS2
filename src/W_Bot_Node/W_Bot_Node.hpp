@@ -127,28 +127,30 @@ class W_Bot_Node : public rclcpp::Node {
 
    static W_Bot_Node* self_ptr;
     W_Bot_Node(
-        // const std::string& node_name,
+        const std::string& node_name,
         // const std::string& pub_topic,
         // const std::string& sub_topic,
         const std::string& dev_config)
-        : Node("w_bot_node") {
+        : Node(node_name) {
         self_ptr = this;
         std::string yaml_path = "src/devices_pkg/sdk/config/YAML/W_Bot/out/TOP.yaml";
         hardware_init(yaml_path, dev_config);
-        publisher_Motor = this->create_publisher<devices_pkg::msg::WBotMotor>("wbot_motor_data", 10);
-        publisher_IMU = this->create_publisher<devices_pkg::msg::WBotIMU>("wbot_imu_data", 10);
-        publisher_Battery = this->create_publisher<devices_pkg::msg::WBotBattery>("wbot_battery_data", 10);
-        publisher_Collision = this->create_publisher<devices_pkg::msg::WBotCollision>("wbot_collision_data", 10);
-        publisher_MotorTem = this->create_publisher<devices_pkg::msg::WBotMotorTem>("wbot_motor_tem_data", 10);
-        subscription_Motor = this->create_subscription<devices_pkg::msg::WBotMotor>("wbot_motor_cmd", 10,
+        std::string set_name = "w_bot";
+        // std::string set_name = node_name;
+        publisher_Motor = this->create_publisher<devices_pkg::msg::WBotMotor>(set_name + "_motor_data", 10);
+        publisher_IMU = this->create_publisher<devices_pkg::msg::WBotIMU>(set_name + "_imu_data", 10);
+        publisher_Battery = this->create_publisher<devices_pkg::msg::WBotBattery>(set_name + "_battery_data", 10);
+        publisher_Collision = this->create_publisher<devices_pkg::msg::WBotCollision>(set_name + "_collision_data", 10);
+        publisher_MotorTem = this->create_publisher<devices_pkg::msg::WBotMotorTem>(set_name + "_motor_tem_data", 10);
+        subscription_Motor = this->create_subscription<devices_pkg::msg::WBotMotor>(set_name + "_motor_cmd", 10,
                                                                                     std::bind(&W_Bot_Node::Motor_topic_callback, this, std::placeholders::_1));
-        subscription_LED = this->create_subscription<devices_pkg::msg::WBotLED>("wbot_led_cmd", 10,
+        subscription_LED = this->create_subscription<devices_pkg::msg::WBotLED>(set_name + "_led_cmd", 10,
                                                                                 std::bind(&W_Bot_Node::led_topic_callback, this, std::placeholders::_1));
 
-        subscription_Motor_Stop = this->create_subscription<std_msgs::msg::String>("wbot_motor_stop", 10, \
+        subscription_Motor_Stop = this->create_subscription<std_msgs::msg::String>(set_name + "_motor_stop", 10, \
             std::bind(&W_Bot_Node::Motor_Stop_topic_callback, this, std::placeholders::_1));
 
-        publisher_Error = this->create_publisher<std_msgs::msg::String>("wbot_error_data", 10);
+        publisher_Error = this->create_publisher<std_msgs::msg::String>(set_name + "_error_data", 10);
         timer_imu = this->create_wall_timer(
             std::chrono::milliseconds(10),
             std::bind(&W_Bot_Node::imu_timer_callback, this));

@@ -13,7 +13,7 @@ PC_IP: 192.168.3.245
 SN: 1Y2S2602002M
 Boards:
   - Id: 101
-    IP: 192.168.3.106
+    IP: 192.168.3.101
     # Port: 19001
 """
     # dev_config_2 = '1'
@@ -21,7 +21,7 @@ Boards:
     
 
     node_mapping = {
-        'y_hand_node': ('Y_Hand_Node','y_hand_cmd', 'y_hand_data','None'),
+        'y_hand_node': ('Y_Hand_Node','y_hand_cmd', 'y_hand_data',config_dev1),
         'test_y_hand_node': ("Test_Y_Hand_Node", 'y_hand_data','y_hand_cmd', 'None')
     }
 

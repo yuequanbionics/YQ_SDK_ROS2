@@ -19,9 +19,15 @@ int main(int argc, char *argv[])
     rclcpp::init(argc, argv);
 
     //auto logger = rclcpp::get_logger("SensorDataLogger");
+    if (argc < 3)
+    {
+        cout << "Invalid or incomplete parameters" << endl;
+        rclcpp::shutdown();
+        return -1;
+    }
 
     //const auto WBot_Node = std::make_shared<W_Bot_Node>(argv[1],argv[2],argv[3],argv[4]);
-    const auto WBot_Double_Node = std::make_shared<W_Bot_Double_Node>(argv[1]);
+    const auto WBot_Double_Node = std::make_shared<W_Bot_Double_Node>(argv[1],argv[2]);
 
    
     // 创建多线程执行器
