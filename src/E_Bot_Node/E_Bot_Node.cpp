@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     rclcpp::init(argc, argv);
 
-    hardware_init("src/devices_pkg/src/sdk/config/YAML/E_Bot/li_wenzhi/Servo_Config/TOP.yaml");
+    hardware_init("install/devices_pkg/share/devices_pkg/YAML/E_Bot/li_wenzhi/Servo_Config/TOP.yaml");
 
     const auto ebot_node = std::make_shared<E_Bot_Node>(E_Hand);
 

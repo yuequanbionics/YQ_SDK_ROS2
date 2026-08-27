@@ -58,7 +58,7 @@ class X_Hand_Node : public rclcpp::Node {
         const std::string& sub_topic,
         const std::string& dev_type,
         const std::string& dev_config) {
-        string yaml_path = "src/devices_pkg/sdk/config/YAML/X_Hand/out/" + dev_type + "/TOP.yaml";
+        string yaml_path = "install/devices_pkg/share/devices_pkg/YAML/X_Hand/out/" + dev_type + "/TOP.yaml";
         if (hardware_init(yaml_path, dev_config) != 0) {
             cout << "Hardware initialization failed" << endl;
             return -1;

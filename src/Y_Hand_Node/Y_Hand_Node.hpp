@@ -93,7 +93,7 @@ public:
         const std::string& sub_topic,
         const std::string& dev_config) {
 
-        if(hardware_init("src/devices_pkg/sdk/config/YAML/Y_Hand/out/TOP.yaml", dev_config) != 0)
+        if(hardware_init("install/devices_pkg/share/devices_pkg/YAML/Y_Hand/out/TOP.yaml", dev_config) != 0)
         {
             cout << "Hardware initialization failed" << endl;
             return -1;

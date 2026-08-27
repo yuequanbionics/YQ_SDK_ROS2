@@ -28,7 +28,7 @@ public:
 
         ) : Node(node_name)
     {
-        hardware_init("src/devices_pkg/sdk/config/YAML/IO_Board/out/TOP.yaml", dev_config);
+        hardware_init("install/devices_pkg/share/devices_pkg/YAML/IO_Board/out/TOP.yaml", dev_config);
         publisher_ = this->create_publisher<devices_pkg::msg::IOBoardMsg>(pub_topic, 10);
         subscription_ = this->create_subscription<devices_pkg::msg::IOBoardMsg>(sub_topic, 10, \
             std::bind(&IO_Board_Node::topic_callback, this, std::placeholders::_1));

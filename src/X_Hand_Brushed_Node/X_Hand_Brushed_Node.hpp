@@ -49,7 +49,7 @@ public:
         const std::string& dev_config
     )
     : Node("x_hand_brushed_node"){
-        std::string path = "src/devices_pkg/sdk/config/YAML/X_Hand_Brushed/out/TOP.yaml";
+        std::string path = "install/devices_pkg/share/devices_pkg/YAML/X_Hand_Brushed/out/TOP.yaml";
         hardware_init(path, dev_config);
         publisher_Motor = this->create_publisher<devices_pkg::msg::XHandBrushedMsg>("x_hand_brushed_data", 10);
         subscription_Motor = this->create_subscription<devices_pkg::msg::XHandBrushedMsg>("x_hand_brushed_cmd", 10, \

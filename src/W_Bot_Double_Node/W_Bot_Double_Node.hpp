@@ -75,7 +75,7 @@ public:
     )
     : Node(node_name)
     {
-        std::string path = "src/devices_pkg/sdk/config/YAML/W_Bot_Double/out/TOP.yaml";
+        std::string path = "install/devices_pkg/share/devices_pkg/YAML/W_Bot_Double/out/TOP.yaml";
         hardware_init(path, dev_config);
         publisher_Motor = this->create_publisher<devices_pkg::msg::WBotDoubleMotor>("wbot_motor_double_data", 10);
         subscription_Motor = this->create_subscription<devices_pkg::msg::WBotDoubleMotor>("wbot_motor_double_cmd", 10, \

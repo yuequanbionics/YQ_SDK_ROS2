@@ -133,7 +133,7 @@ class W_Bot_Node : public rclcpp::Node {
         const std::string& dev_config)
         : Node(node_name) {
         self_ptr = this;
-        std::string yaml_path = "src/devices_pkg/sdk/config/YAML/W_Bot/out/TOP.yaml";
+        std::string yaml_path = "install/devices_pkg/share/devices_pkg/YAML/W_Bot/out/TOP.yaml";
         hardware_init(yaml_path, dev_config);
         std::string set_name = "w_bot";
         // std::string set_name = node_name;

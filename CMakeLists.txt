@@ -148,6 +148,14 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}/
 )
 
+# 安装YAML配置文件到share/<package_name>目录
+install(
+  DIRECTORY
+    sdk/config/YAML
+  DESTINATION
+    share/${PROJECT_NAME}/
+)
+
 # 解决「ROS2自动生成的消息接口代码未提前编译」导致的编译错误
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
